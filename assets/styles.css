@@ -67,7 +67,7 @@ h1, h2, h3 {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 90;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -348,16 +348,19 @@ body.locked { overflow: hidden; }
 }
 
 @media (max-width: 680px) {
-  .burger { display: block; }
+  /* Le backdrop-filter crée un bloc englobant pour les enfants en position:fixed.
+     On le retire sur mobile pour que le menu plein écran couvre bien tout l'écran. */
+  .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--bg); }
+  .burger { display: block; position: relative; z-index: 95; }
   .nav {
-    position: fixed; inset: 0 0 0 auto; width: min(80vw, 320px);
-    flex-direction: column; align-items: flex-start; justify-content: center;
-    gap: 26px; padding: 40px; background: var(--surface);
-    border-left: 1px solid var(--line); box-shadow: -10px 0 40px rgba(0,0,0,0.12);
-    transform: translateX(100%); transition: transform 0.35s var(--ease); z-index: 60;
+    position: fixed; inset: 0; width: 100%;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 30px; padding: 90px 40px 50px; background: var(--bg);
+    transform: translateX(100%); transition: transform 0.35s var(--ease); z-index: 80;
   }
   .nav.open { transform: none; }
-  .nav a { font-size: 1.15rem; }
+  .nav a { font-size: 1.5rem; color: var(--text); }
+  .nav .nav-cta { font-size: 1.05rem; padding: 11px 24px; }
   .products { grid-template-columns: 1fr; }
   .values { grid-template-columns: 1fr; }
   .section-head { flex-direction: column; align-items: flex-start; }
