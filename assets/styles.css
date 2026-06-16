@@ -200,6 +200,22 @@ h1, h2, h3 { font-family: "Syne", sans-serif; font-weight: 800; line-height: 1.0
 .split-text p { color: var(--muted); margin-bottom: 1.1rem; }
 .split-text em { color: var(--text); font-style: italic; }
 .split-text .btn { margin-top: 10px; }
+.timeline { display: flex; gap: 16px; margin: 22px 0 26px; }
+.tl-item { flex: 1; background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px; padding: 14px 16px; }
+.tl-year { display: block; font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+.tl-label { display: block; color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+
+/* ---------- Événements ---------- */
+.event-band { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 5vw, 56px); align-items: center; background: linear-gradient(135deg, rgba(20,184,166,0.14), rgba(255,106,61,0.10)); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(28px, 5vw, 56px); }
+.event-text h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); margin-bottom: 1rem; }
+.event-text > p { color: var(--muted); margin-bottom: 1.2rem; }
+.event-points { list-style: none; margin-bottom: 1.6rem; display: grid; gap: 10px; }
+.event-points li { padding-left: 26px; position: relative; color: var(--text); }
+.event-points li::before { content: "✦"; position: absolute; left: 0; color: var(--accent); }
+.event-visual { aspect-ratio: 1; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--line); display: grid; place-content: center; text-align: center; gap: 4px; }
+.event-emoji { font-size: clamp(3rem, 8vw, 5rem); }
+.event-visual strong { font-family: "Syne", sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; }
+.event-visual small { color: var(--muted); letter-spacing: 0.18em; font-size: 0.72rem; text-transform: uppercase; }
 
 /* ---------- Valeurs ---------- */
 .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -267,6 +283,8 @@ h1, h2, h3 { font-family: "Syne", sans-serif; font-weight: 800; line-height: 1.0
   .values { grid-template-columns: 1fr 1fr; }
   .split { grid-template-columns: 1fr; }
   .contact { grid-template-columns: 1fr; }
+  .event-band { grid-template-columns: 1fr; }
+  .timeline { flex-wrap: wrap; }
 }
 
 @media (max-width: 680px) {
