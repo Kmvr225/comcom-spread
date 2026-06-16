@@ -1,51 +1,57 @@
-# BONUS — The Store · Site vitrine
+# BONUS — Site vitrine
 
-Site vitrine pour la marque de mode & création **BONUS — The Store**
-(Instagram : [@e_bonus_](https://www.instagram.com/e_bonus_)).
-Réalisé par **COM'COM** comme proposition à présenter.
+Site vitrine pour **BONUS** : *The Store* (sacs & pièces pour working women, 2026)
+et *Le Mag* (magazine beauté / bien-être / lifestyle, depuis 2024).
+Made in Sénégal 🇸🇳 — Instagram : [@e_bonus_](https://www.instagram.com/e_bonus_).
+Réalisé par **COM'COM**.
 
 ## Aperçu
 
-Page unique, responsive, thème sombre, dans l'esprit du compte Instagram :
-slogan « Créons de la valeur ensemble », mise en avant des produits, à propos,
-démarche de la marque, newsletter et contact.
+Page unique, responsive, thème clair (ivoire + terracotta + doré), typo serif,
+animations au scroll. Structure : Hero → Ce qui fait Bonus → L'Apéro (événements)
+→ Le Store → Le Mag → À propos → Contact → Newsletter.
+
+## Code d'accès (aperçu privé)
+
+Le site est protégé par un écran de code (idéal pour une présentation privée).
+
+- **Code par défaut : `BONUS2026`**
+- Pour le changer : éditer `GATE_CODE` en haut de `assets/script.js`.
+- ⚠️ Protection « douce » (côté navigateur) : parfaite pour un aperçu pro,
+  mais ce n'est pas une sécurité forte.
+
+## Collecte des e-mails (newsletter + contact)
+
+Les formulaires envoient via **FormSubmit.co** (gratuit, sans inscription).
+
+- Destination définie par `FORM_ENDPOINT` dans `assets/script.js`
+  (actuellement `mbenson.valentino@gmail.com` — à remplacer par l'e-mail voulu).
+- ⚠️ **Activation unique** : au tout premier envoi, FormSubmit envoie un e-mail
+  de confirmation à cette adresse. Il faut cliquer le lien une fois pour activer.
+
+## Mise en ligne (GitHub Pages)
+
+Un workflow (`.github/workflows/deploy.yml`) publie le site automatiquement.
+
+**Étape manuelle unique** (à faire une fois sur GitHub) :
+1. Aller dans **Settings → Pages** du dépôt.
+2. Sous **Build and deployment → Source**, choisir **GitHub Actions**.
+3. Le prochain push (ou relance du workflow) publie le site.
+
+URL une fois en ligne : `https://kmvr225.github.io/comcom-spread/`
 
 ## Lancer en local
 
-Aucune installation requise — c'est un site statique.
-
 ```bash
-# avec Python
-python3 -m http.server 8000
-# puis ouvrir http://localhost:8000
+python3 -m http.server 8000   # puis http://localhost:8000
 ```
 
-Ou ouvrir directement `index.html` dans un navigateur.
+## À personnaliser
 
-## Structure
-
-```
-index.html        Page principale
-assets/styles.css Styles (thème sombre, responsive)
-assets/script.js  Menu mobile, animations, formulaires (démo)
-```
-
-## À personnaliser avant mise en ligne
-
-- **Photos produits** : remplacer les visuels dégradés (`.media-1/2/3` dans
-  `styles.css`) par les vraies photos. Glisser les images dans `assets/img/`
-  et utiliser `background-image` ou des balises `<img>`.
-- **Coordonnées** : adresse e-mail (`contact@bonus-thestore.com`) et lien
-  Instagram dans `index.html`.
-- **Prix** : actuellement « sur demande » — à compléter si souhaité.
-- **Formulaires** : la newsletter et le contact sont en démo front.
-  Les brancher sur un service (Formspree, Brevo, Mailchimp, etc.).
-
-## Pistes d'évolution
-
-- Boutique en ligne (paiement) si la cliente veut vendre directement.
-- Nom de domaine + hébergement (Netlify / Vercel / GitHub Pages).
-- Référencement local et fiche Google.
+- **Photos** : remplacer les dégradés (`.media-*`, `.mag-*` dans `styles.css`)
+  par les vraies photos (sacs, couverture du Numéro 01, Apéro).
+- **Prix** : actuellement « sur demande / en vente ».
+- **Code d'accès** et **e-mail de réception** : voir ci-dessus.
 
 ---
 © COM'COM
