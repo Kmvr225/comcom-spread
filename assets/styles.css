@@ -223,6 +223,7 @@ h1, h2, h3 { font-family: "Syne", sans-serif; font-weight: 800; line-height: 1.0
 .contact-cards { display: flex; flex-direction: column; gap: 20px; }
 .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: border-color 0.25s var(--ease), transform 0.25s var(--ease); }
 .contact-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.contact-card.highlight { background: linear-gradient(135deg, rgba(20,184,166,0.16), rgba(20,184,166,0.04)); border-color: rgba(20,184,166,0.5); }
 .contact-card h3 { font-size: 1.3rem; margin-bottom: 4px; }
 .contact-card p { font-size: 1.05rem; margin-bottom: 10px; }
 .contact-card span { color: var(--accent); font-size: 0.88rem; font-weight: 500; }
@@ -242,6 +243,19 @@ h1, h2, h3 { font-family: "Syne", sans-serif; font-weight: 800; line-height: 1.0
 .footer-nav a:hover { color: var(--text); }
 .footer-bottom { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; padding-top: 24px; color: var(--muted); font-size: 0.85rem; }
 .credit strong { color: var(--accent); }
+
+/* ---------- Bouton flottant WhatsApp ---------- */
+.float-wa {
+  position: fixed; right: 20px; bottom: 20px; z-index: 70;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #25d366; color: #04231f;
+  font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.9rem;
+  padding: 13px 20px; border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  transition: transform 0.2s var(--ease);
+}
+.float-wa::before { content: "💬"; }
+.float-wa:hover { transform: translateY(-3px) scale(1.03); }
 
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
