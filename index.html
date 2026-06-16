@@ -17,7 +17,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
-<body>
+<body class="locked">
+  <!-- Écran de code d'accès (aperçu privé) -->
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <span class="gate-brand">BONUS</span>
+      <span class="gate-tag">Aperçu privé</span>
+      <p class="gate-text">Entrez le code d'accès pour découvrir le site.</p>
+      <form id="gateForm" class="gate-form">
+        <input id="gateInput" type="password" placeholder="Code d'accès" autocomplete="off" aria-label="Code d'accès" />
+        <button type="submit" class="btn btn-primary">Entrer</button>
+      </form>
+      <p class="gate-msg" id="gateMsg" role="status"></p>
+    </div>
+    <p class="gate-credit">Réalisé par COM'COM</p>
+  </div>
+
   <!-- Annonce -->
   <div class="topbar">
     <p>
