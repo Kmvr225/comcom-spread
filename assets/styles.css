@@ -164,6 +164,10 @@ h1, h2, h3 { font-family: "Syne", sans-serif; font-weight: 800; line-height: 1.0
 .media-1 { background: linear-gradient(135deg, #ff6a3d, #ff9c5b); }
 .media-2 { background: linear-gradient(135deg, #1a1a1f, #2c2f3a); }
 .media-3 { background: linear-gradient(135deg, #14b8a6, #0e7c70); }
+.mag-1 { background: linear-gradient(135deg, #caa15a, #8a6d2f); }
+.mag-2 { background: linear-gradient(135deg, #3a2a44, #1a1320); }
+.mag-3 { background: linear-gradient(135deg, #ff6a3d, #c23b1f); }
+.card-media.mag-1::after, .card-media.mag-2::after, .card-media.mag-3::after { content: "BONUS MAG"; font-size: 1.1rem; }
 .card-media::after {
   content: "BONUS";
   position: absolute;
