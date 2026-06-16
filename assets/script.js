@@ -19,9 +19,24 @@ nav.querySelectorAll('a').forEach((link) => {
   });
 });
 
-// Apparition au scroll
-const revealEls = document.querySelectorAll('.section, .cta-band, .card, .value');
+// Ombre du header au scroll
+const header = document.querySelector('.site-header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Apparition au scroll (fondu + montée, en cascade)
+const revealEls = document.querySelectorAll(
+  '.section-head, .card, .value, .split-visual, .split-text, .event-band, .cta-band'
+);
 revealEls.forEach((el) => el.classList.add('reveal'));
+
+// Décalage progressif pour les éléments d'une même grille
+document.querySelectorAll('.products, .values').forEach((grid) => {
+  Array.from(grid.children).forEach((child, i) => {
+    child.style.transitionDelay = (i * 0.09) + 's';
+  });
+});
 
 const io = new IntersectionObserver(
   (entries) => {
@@ -32,7 +47,7 @@ const io = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.12 }
+  { threshold: 0.14 }
 );
 revealEls.forEach((el) => io.observe(el));
 
