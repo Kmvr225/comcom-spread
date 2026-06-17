@@ -61,7 +61,7 @@ export function KoomMark({
 }) {
   return (
     <svg
-      viewBox="0 0 240 200"
+      viewBox="0 0 240 240"
       className={className}
       style={style}
       role="img"
@@ -74,59 +74,62 @@ export function KoomMark({
           <stop offset="45%" stopColor="#E9B949" />
           <stop offset="100%" stopColor="#C8902B" />
         </linearGradient>
-        <linearGradient id="mark-cradle" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="mark-bowl" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#1F8A57" />
           <stop offset="42%" stopColor="#E9B949" />
           <stop offset="58%" stopColor="#E9B949" />
           <stop offset="100%" stopColor="#D24A34" />
         </linearGradient>
-        <radialGradient id="mark-glow" cx="50%" cy="40%" r="60%">
+        <radialGradient id="mark-glow" cx="50%" cy="38%" r="60%">
           <stop offset="0%" stopColor="#E9B949" stopOpacity="0.35" />
           <stop offset="100%" stopColor="#E9B949" stopOpacity="0" />
         </radialGradient>
       </defs>
 
       {/* Halo */}
-      <ellipse cx="120" cy="80" rx="110" ry="80" fill="url(#mark-glow)" />
+      <ellipse cx="120" cy="95" rx="118" ry="92" fill="url(#mark-glow)" />
 
-      {/* L'infini porté (le haut = le projet) */}
-      <g transform="translate(20,30) scale(0.83)">
+      {/* Le bol / calebasse qui soutient (le bas = KOOM/KOOM) — profond, pas un sourire */}
+      <path
+        d="M40 96 C40 200 200 200 200 96"
+        stroke="#4a3310"
+        strokeWidth="26"
+        strokeLinecap="round"
+        opacity="0.5"
+        transform="translate(0,6)"
+      />
+      <path
+        d="M40 96 C40 200 200 200 200 96"
+        stroke="url(#mark-bowl)"
+        strokeWidth="24"
+        strokeLinecap="round"
+      />
+      {/* Pied du bol */}
+      <ellipse cx="120" cy="214" rx="34" ry="8" fill="#4a3310" opacity="0.6" />
+
+      {/* Barres de croissance dans le bol (économie / koom-koom) */}
+      <g fill="url(#mark-gold)">
+        <rect x="98" y="150" width="12" height="26" rx="2.5" />
+        <rect x="114" y="136" width="12" height="40" rx="2.5" />
+        <rect x="130" y="120" width="12" height="56" rx="2.5" />
+      </g>
+
+      {/* L'infini porté (le haut = le projet) — grand, dominant, posé sur le rim du bol */}
+      <g transform="translate(120,72) scale(1.18)">
         <path
-          d="M100 54 C100 18 168 18 168 54 C168 90 100 90 100 54 C100 18 32 18 32 54 C32 90 100 90 100 54 Z"
+          d="M0 6 C0 -28 -56 -28 -56 6 C-56 40 0 40 0 6 C0 -28 56 -28 56 6 C56 40 0 40 0 6 Z"
           stroke="#5A3D12"
-          strokeWidth="16"
+          strokeWidth="19"
           strokeLinecap="round"
           opacity="0.5"
           transform="translate(0,4)"
         />
         <path
-          d="M100 50 C100 14 168 14 168 50 C168 86 100 86 100 50 C100 14 32 14 32 50 C32 86 100 86 100 50 Z"
+          d="M0 6 C0 -28 -56 -28 -56 6 C-56 40 0 40 0 6 C0 -28 56 -28 56 6 C56 40 0 40 0 6 Z"
           stroke="url(#mark-gold)"
-          strokeWidth="16"
+          strokeWidth="19"
           strokeLinecap="round"
         />
-      </g>
-
-      {/* Le berceau qui soutient (le bas = KOOM/KOOM) */}
-      <path
-        d="M44 120 C44 178 196 178 196 120"
-        stroke="#5A3D12"
-        strokeWidth="20"
-        strokeLinecap="round"
-        opacity="0.5"
-        transform="translate(0,5)"
-      />
-      <path
-        d="M44 120 C44 178 196 178 196 120"
-        stroke="url(#mark-cradle)"
-        strokeWidth="18"
-        strokeLinecap="round"
-      />
-      {/* Barres de croissance dans le berceau (économie / koom-koom) */}
-      <g fill="url(#mark-gold)">
-        <rect x="104" y="138" width="9" height="16" rx="2" />
-        <rect x="116" y="130" width="9" height="24" rx="2" />
-        <rect x="128" y="120" width="9" height="34" rx="2" />
       </g>
     </svg>
   );

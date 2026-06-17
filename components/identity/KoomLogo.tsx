@@ -16,10 +16,10 @@ export function KoomLogo({
   size?: "sm" | "md" | "lg" | "xl";
 }) {
   const sizes = {
-    sm: { text: "text-xl", glyph: "h-3.5 w-7", gap: "gap-1" },
-    md: { text: "text-3xl", glyph: "h-5 w-10", gap: "gap-1.5" },
-    lg: { text: "text-5xl", glyph: "h-8 w-16", gap: "gap-2" },
-    xl: { text: "text-7xl", glyph: "h-12 w-24", gap: "gap-3" },
+    sm: { text: "text-xl", glyph: "h-5 w-10", gap: "gap-0.5" },
+    md: { text: "text-3xl", glyph: "h-7 w-14", gap: "gap-1" },
+    lg: { text: "text-5xl", glyph: "h-12 w-24", gap: "gap-1.5" },
+    xl: { text: "text-7xl", glyph: "h-[4.5rem] w-36", gap: "gap-2" },
   }[size];
 
   const word = (
