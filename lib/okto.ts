@@ -1,5 +1,5 @@
-// Logique front-end de LIA / OKTO GUIDE : comprendre le besoin, orienter,
-// préparer une demande. Détection par mots-clés, questions guidées, brief final.
+// Logique front-end d'OKTO (assistant visible côté client) : comprendre le besoin,
+// orienter, préparer une demande. Détection par mots-clés, questions guidées, brief final.
 
 export type CategoryId =
   | "visibilite-locale"
@@ -17,7 +17,7 @@ export type CategoryId =
 export type Category = {
   id: CategoryId;
   label: string;
-  intro: string; // ce que LIA répond quand elle reconnaît le besoin
+  intro: string; // ce qu'OKTO répond quand il reconnaît le besoin
   recommended: string[]; // services recommandés (labels lisibles)
   keywords: string[];
 };

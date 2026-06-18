@@ -23,9 +23,9 @@ direct).
 - `/services` — services par besoin, sélection + envoi sur Instagram.
 - `/identite` — la charte de marque.
 
-> ⚠️ **À confirmer** : le handle Instagram réel (placeholder `@koomkoom_sn` dans
-> `lib/brand.ts`). Le bouton vocal utilise l'API Web Speech du navigateur quand
-> elle est disponible, sinon affiche « bientôt disponible ».
+> Instagram : `@koomkoombyspread` (dans `lib/brand.ts`). Le bouton vocal utilise
+> l'API Web Speech du navigateur quand elle est disponible, sinon affiche
+> « bientôt disponible ».
 
 ## Stack
 
@@ -47,8 +47,8 @@ direct).
 
 - **OKTO OS** (interne) — coordonne KOOM/KOOM et les 6 co-workers : RADAR, L'ŒIL,
   LA VOIX, CADRE, ATELIER, RELAIS.
-- **OKTO GUIDE** (visiteurs) — assistant qui comprend, classe et reformule le besoin
-  client en brief clair. *(Phase 2.)*
+- **OKTO** (visiteurs) — assistant visible qui discute, comprend, classe et reformule
+  le besoin client en brief clair. « Parler à OKTO ».
 
 ## Structure
 

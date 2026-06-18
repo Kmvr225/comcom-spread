@@ -7,9 +7,9 @@ export const brand = {
   mind: "Vous venez avec l'idée. KOOM/KOOM apporte la clarté, la structure et l'accompagnement.",
   promise:
     "Transformer un besoin flou en projet digital clair, structuré et réalisable.",
-  // ⚠️ À confirmer : handle Instagram réel de KOOM/KOOM.
-  instagram: "koomkoom_sn",
-  instagramUrl: "https://instagram.com/koomkoom_sn",
+  instagram: "koomkoombyspread",
+  instagramUrl:
+    "https://www.instagram.com/koomkoombyspread?igsh=MTlyNzlpYXJkYmdwZA%3D%3D&utm_source=qr",
 };
 
 export type PaletteColor = {
@@ -82,9 +82,9 @@ export const oktoLevels = [
   },
   {
     id: "guide",
-    name: "OKTO GUIDE",
+    name: "OKTO",
     scope: "Visiteurs",
-    line: "OKTO GUIDE comprend les clients.",
+    line: "OKTO comprend les clients.",
     desc: "L'assistant visible : il aide à expliquer, classer et reformuler un besoin en brief clair.",
   },
 ];

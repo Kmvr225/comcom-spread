@@ -169,7 +169,7 @@ export default function IdentityPage() {
       </Section>
 
       {/* OKTO : DISTINCTION */}
-      <Section id="okto" kicker="05 — Système" title="OKTO OS ≠ OKTO GUIDE">
+      <Section id="okto" kicker="05 — Système" title="OKTO OS ≠ OKTO">
         <div className="grid gap-6 md:grid-cols-2">
           {oktoLevels.map((o, i) => (
             <Reveal key={o.id} delay={i * 0.1}>
@@ -216,8 +216,8 @@ export default function IdentityPage() {
               L'identité est posée. Le site-expérience est la prochaine étape.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sand">
-              Hero, OKTO GUIDE (assistant V1), méthode, marché Sénégal, outils et CTA
-              « Parler à OKTO » seront construits sur cette base.
+              Hero, OKTO (assistant visible), méthode, marché Sénégal, outils et CTA
+              « Parler à OKTO » sont construits sur cette base.
             </p>
             <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-wider text-sand/70">
               <Chip>Next.js</Chip>

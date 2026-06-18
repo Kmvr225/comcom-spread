@@ -11,7 +11,7 @@ import {
   buildBrief,
   detectCategory,
   guidedQuestions,
-} from "@/lib/lia";
+} from "@/lib/okto";
 
 type Msg = { from: "okto" | "user"; text: string };
 
