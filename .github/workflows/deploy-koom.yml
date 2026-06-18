@@ -1,8 +1,9 @@
 name: Déploiement KOOM/KOOM (GitHub Pages)
 
+# ⚠️ Privé pour l'instant : PAS de publication automatique.
+# Le site ne se déploie que si on lance le workflow à la main (workflow_dispatch),
+# et seulement si GitHub Pages a été activé dans Settings → Pages.
 on:
-  push:
-    branches: ["claude/koom-site-redesign-ir1r11"]
   workflow_dispatch:
 
 permissions:
