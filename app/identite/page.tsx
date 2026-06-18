@@ -19,7 +19,7 @@ export default function IdentityPage() {
       <div className="flex items-center justify-center gap-3 border-b border-gold/10 bg-ink/60 py-2 text-[11px] uppercase tracking-[0.3em] text-sand/70">
         <span>Charte d'identité</span>
         <span className="text-gold">·</span>
-        <span>{brand.former} devient {brand.name}</span>
+        <span>{brand.name}</span>
       </div>
 
       {/* HERO */}

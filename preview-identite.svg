@@ -25,7 +25,7 @@
   <rect width="800" height="1040" fill="url(#bg)"/>
   <ellipse cx="400" cy="330" rx="360" ry="300" fill="url(#glow)"/>
 
-  <text x="400" y="60" text-anchor="middle" fill="#CBB89C" font-size="15" letter-spacing="6">CHARTE D'IDENTITÉ — COM-COM DEVIENT KOOM/KOOM</text>
+  <text x="400" y="60" text-anchor="middle" fill="#CBB89C" font-size="15" letter-spacing="6">CHARTE D'IDENTITÉ — KOOM/KOOM</text>
 
   <!-- SYMBOLE : infini dominant porté par un bol profond (calebasse) -->
   <g transform="translate(400,300)">

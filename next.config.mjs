@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 // Export statique pour GitHub Pages.
-// Le dépôt étant servi sous /comcom-spread, on applique un basePath en production.
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/comcom-spread" : "";
+// basePath configurable : vide par défaut. Pour un déploiement sur une "project page"
+// (https://user.github.io/<repo>/), définir NEXT_PUBLIC_BASE_PATH="/<repo>".
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const nextConfig = {
   output: "export",

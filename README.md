@@ -1,7 +1,7 @@
 # KOOM/KOOM — Identité & site-expérience
 
-Refonte de **COM-COM** en **KOOM/KOOM** : la marque qui transforme un besoin flou
-en projet digital clair, structuré et réalisable. **Née et lancée au Sénégal 🇸🇳.**
+**KOOM/KOOM** : la marque qui transforme un besoin flou en projet digital clair,
+structuré et réalisable. **Née et lancée au Sénégal 🇸🇳.**
 
 > Vous venez avec l'idée. KOOM/KOOM apporte la clarté, la structure et l'accompagnement.
 > **Soutenir · Développer · Guider.**
@@ -72,6 +72,9 @@ npm run build    # export statique -> out/
 
 ## Déploiement
 
-Workflow `.github/workflows/deploy-koom.yml` : build Next.js + publication GitHub
-Pages à chaque push sur la branche. Activer une fois : **Settings → Pages → Source : GitHub Actions**.
-URL : `https://kmvr225.github.io/comcom-spread/`
+**Privé pour l'instant** : le workflow `.github/workflows/deploy-koom.yml` ne publie
+**pas** automatiquement. Il ne se lance qu'à la main (*Actions → Run workflow*), et
+seulement si GitHub Pages est activé (*Settings → Pages → Source : GitHub Actions*).
+
+Le `basePath` n'est plus codé en dur : il vaut le nom du dépôt au moment du build
+(`NEXT_PUBLIC_BASE_PATH`). URL finale : `https://<utilisateur>.github.io/<dépôt>/`.

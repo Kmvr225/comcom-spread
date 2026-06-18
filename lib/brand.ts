@@ -2,7 +2,6 @@
 
 export const brand = {
   name: "KOOM/KOOM",
-  former: "COM-COM",
   tagline: "Soutenir · Développer · Guider",
   mind: "Vous venez avec l'idée. KOOM/KOOM apporte la clarté, la structure et l'accompagnement.",
   promise:

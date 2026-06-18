@@ -3,7 +3,7 @@
 Site vitrine pour **BONUS** : *The Store* (sacs & pièces pour working women, 2026)
 et *Le Mag* (magazine beauté / bien-être / lifestyle, depuis 2024).
 Made in Sénégal 🇸🇳 — Instagram : [@e_bonus_](https://www.instagram.com/e_bonus_).
-Réalisé par **COM'COM**.
+Réalisé par **KOOM/KOOM**.
 
 ## Aperçu
 
@@ -38,7 +38,7 @@ Un workflow (`.github/workflows/deploy.yml`) publie le site automatiquement.
 2. Sous **Build and deployment → Source**, choisir **GitHub Actions**.
 3. Le prochain push (ou relance du workflow) publie le site.
 
-URL une fois en ligne : `https://kmvr225.github.io/comcom-spread/`
+URL une fois en ligne : `https://<utilisateur>.github.io/<dépôt>/`
 
 ## Lancer en local
 
@@ -54,4 +54,4 @@ python3 -m http.server 8000   # puis http://localhost:8000
 - **Code d'accès** et **e-mail de réception** : voir ci-dessus.
 
 ---
-© COM'COM
+© KOOM/KOOM

@@ -1,6 +1,6 @@
 # Clients — KOOM/KOOM
 
-Projets clients réalisés par **KOOM/KOOM** (ex-COM-COM).
+Projets clients réalisés par **KOOM/KOOM**.
 Sert aussi d'espace de tests / démos avant production.
 
 ## Projets
