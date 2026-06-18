@@ -9,9 +9,23 @@ en projet digital clair, structuré et réalisable. **Née et lancée au Sénég
 ## Statut
 
 **Phase 1 — Identité (livrée).** Symbole K∞M, palette chaude premium, typographie,
-logo en composant, distinction OKTO OS / OKTO GUIDE, page de présentation de marque.
-**Phase 2 — Site-expérience complet** (hero, OKTO GUIDE V1, méthode, marché, outils,
-CTA « Parler à OKTO ») : à construire sur ce socle.
+logo en composant. Page dédiée : `/identite`.
+
+**Phase 2 — Site-expérience (livrée).** Expérience guidée par **OKTO** (assistant
+visible), interface vocale « Parler à OKTO » (Web Speech API + repli), services
+**organisés par besoin** (pas de packs figés) avec choix **mise en place / gestion
+mensuelle / les deux**, exemples clients, et **CTA vers Instagram** (jamais de mail
+direct).
+
+### Pages
+- `/` — accueil : hero, expérience OKTO, besoins, création + accompagnement, exemples, CTA Instagram.
+- `/experience` — l'échange complet avec OKTO (devis préparé → Instagram).
+- `/services` — services par besoin, sélection + envoi sur Instagram.
+- `/identite` — la charte de marque.
+
+> ⚠️ **À confirmer** : le handle Instagram réel (placeholder `@koomkoom_sn` dans
+> `lib/brand.ts`). Le bouton vocal utilise l'API Web Speech du navigateur quand
+> elle est disponible, sinon affiche « bientôt disponible ».
 
 ## Stack
 

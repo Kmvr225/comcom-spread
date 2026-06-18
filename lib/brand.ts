@@ -7,6 +7,9 @@ export const brand = {
   mind: "Vous venez avec l'idée. KOOM/KOOM apporte la clarté, la structure et l'accompagnement.",
   promise:
     "Transformer un besoin flou en projet digital clair, structuré et réalisable.",
+  // ⚠️ À confirmer : handle Instagram réel de KOOM/KOOM.
+  instagram: "koomkoom_sn",
+  instagramUrl: "https://instagram.com/koomkoom_sn",
 };
 
 export type PaletteColor = {
