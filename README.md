@@ -1,4 +1,4 @@
-# KOOM/KOOM — Identité & site-expérience
+# KOOM/KOOM — Identité
 
 **KOOM/KOOM** : la marque qui transforme un besoin flou en projet digital clair,
 structuré et réalisable. **Née et lancée au Sénégal 🇸🇳.**
@@ -8,28 +8,15 @@ structuré et réalisable. **Née et lancée au Sénégal 🇸🇳.**
 
 ## Statut
 
-**Phase 1 — Identité (livrée).** Symbole K∞M, palette chaude premium, typographie,
-logo en composant. Page dédiée : `/identite`.
+**Identité (conservée).** Symbole K∞M, palette chaude premium, typographie, logo en
+composant, distinction OKTO OS / OKTO. La page d'accueil est la charte d'identité.
 
-**Phase 2 — Site-expérience (livrée).** Expérience guidée par **OKTO** (assistant
-visible), interface vocale « Parler à OKTO » (Web Speech API + repli), services
-**organisés par besoin** (pas de packs figés) avec choix **mise en place / gestion
-mensuelle / les deux**, exemples clients, et **CTA vers Instagram** (jamais de mail
-direct).
-
-### Pages
-- `/` — accueil : hero, expérience OKTO, besoins, création + accompagnement, exemples, CTA Instagram.
-- `/experience` — l'échange complet avec OKTO (devis préparé → Instagram).
-- `/services` — services par besoin, sélection + envoi sur Instagram.
-- `/identite` — la charte de marque.
-
-> Instagram : `@koomkoombyspread` (dans `lib/brand.ts`). Le bouton vocal utilise
-> l'API Web Speech du navigateur quand elle est disponible, sinon affiche
-> « bientôt disponible ».
+**Site-expérience : à refaire entièrement plus tard.** Le site client (OKTO, services,
+devis, etc.) a été retiré volontairement — il sera reconstruit sur cette base d'identité.
 
 ## Stack
 
-- **Next.js 14** (App Router, export statique pour GitHub Pages)
+- **Next.js 14** (App Router, export statique)
 - **Tailwind CSS** — tokens de marque dans `tailwind.config.ts`
 - **Framer Motion** — apparitions au scroll, lévitation, halos
 - **next/font** — Sora (titres) + Inter (textes)
@@ -38,27 +25,26 @@ direct).
 
 - **Nom** — racine wolof *Kom-Kom / Koom-koom* : économie, ressources, développement.
 - **Symbole** — `K∞M` : les « OO » en infini ; deux infinis superposés, le bas
-  (KOOM/KOOM) soutient le haut (le projet). Berceau + barres de croissance + accent
-  Sénégal (vert · or · rouge). Réfs visuelles d'annonce → futur rendu 3D Spline.
-- **Palette** — or solaire (accent principal), bleu nuit chaud, bleu tech (secondaire),
-  vert croissance, rouge énergie, blanc cassé. Définie dans `lib/brand.ts`.
+  (KOOM/KOOM) soutient le haut (le projet). Bol qui soutient + barres de croissance +
+  accent Sénégal (vert · or · rouge). Réfs visuelles dans `public/brand/`.
+- **Palette & contenus** — définis dans `lib/brand.ts`.
 
 ## OKTO — à ne pas confondre
 
 - **OKTO OS** (interne) — coordonne KOOM/KOOM et les 6 co-workers : RADAR, L'ŒIL,
   LA VOIX, CADRE, ATELIER, RELAIS.
-- **OKTO** (visiteurs) — assistant visible qui discute, comprend, classe et reformule
-  le besoin client en brief clair. « Parler à OKTO ».
+- **OKTO** (visiteurs) — assistant visible. « Parler à OKTO ». *(À reconstruire.)*
 
 ## Structure
 
 ```
-app/            layout, styles globaux, page d'identité
+app/            layout, styles globaux, page d'identité (accueil)
 components/
   identity/     KoomLogo, KoomSymbol (mark + infini)
   placeholders/ KoomSymbolScene, HeroSplinePlaceholder (slots Spline)
   ui/           Reveal (animation scroll)
-lib/brand.ts    tokens & contenus de marque (source unique)
+lib/brand.ts    tokens & contenus de marque
+public/brand/   visuels de référence (logo, emblème)
 clients/        projets clients / démos (ex. bonus-test)
 ```
 
@@ -72,9 +58,7 @@ npm run build    # export statique -> out/
 
 ## Déploiement
 
-**Privé pour l'instant** : le workflow `.github/workflows/deploy-koom.yml` ne publie
-**pas** automatiquement. Il ne se lance qu'à la main (*Actions → Run workflow*), et
-seulement si GitHub Pages est activé (*Settings → Pages → Source : GitHub Actions*).
-
-Le `basePath` n'est plus codé en dur : il vaut le nom du dépôt au moment du build
-(`NEXT_PUBLIC_BASE_PATH`). URL finale : `https://<utilisateur>.github.io/<dépôt>/`.
+**Privé** : le workflow `.github/workflows/deploy-koom.yml` ne publie **pas**
+automatiquement (manuel uniquement, et seulement si GitHub Pages est activé).
+`basePath` = nom du dépôt au build (`NEXT_PUBLIC_BASE_PATH`).
+Instagram : `@koomkoombyspread`.
