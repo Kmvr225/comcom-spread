@@ -1,0 +1,53 @@
+name: Déploiement KOOM/KOOM (GitHub Pages)
+
+# ⚠️ Privé pour l'instant : PAS de publication automatique.
+# Le site ne se déploie que si on lance le workflow à la main (workflow_dispatch),
+# et seulement si GitHub Pages a été activé dans Settings → Pages.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Build (export statique)
+        # basePath = nom du dépôt (project page), sans valeur codée en dur.
+        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Téléverser l'artefact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+      - name: Déployer
+        id: deployment
+        uses: actions/deploy-pages@v4

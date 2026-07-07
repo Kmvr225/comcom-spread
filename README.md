@@ -1,57 +1,64 @@
-# BONUS — Site vitrine
+# KOOM/KOOM — Identité
 
-Site vitrine pour **BONUS** : *The Store* (sacs & pièces pour working women, 2026)
-et *Le Mag* (magazine beauté / bien-être / lifestyle, depuis 2024).
-Made in Sénégal 🇸🇳 — Instagram : [@e_bonus_](https://www.instagram.com/e_bonus_).
-Réalisé par **COM'COM**.
+**KOOM/KOOM** : la marque qui transforme un besoin flou en projet digital clair,
+structuré et réalisable. **Née et lancée au Sénégal 🇸🇳.**
 
-## Aperçu
+> Vous venez avec l'idée. KOOM/KOOM apporte la clarté, la structure et l'accompagnement.
+> **Soutenir · Développer · Guider.**
 
-Page unique, responsive, thème clair (ivoire + terracotta + doré), typo serif,
-animations au scroll. Structure : Hero → Ce qui fait Bonus → L'Apéro (événements)
-→ Le Store → Le Mag → À propos → Contact → Newsletter.
+## Statut
 
-## Code d'accès (aperçu privé)
+**Identité (conservée).** Symbole K∞M, palette chaude premium, typographie, logo en
+composant, distinction OKTO OS / OKTO. La page d'accueil est la charte d'identité.
 
-Le site est protégé par un écran de code (idéal pour une présentation privée).
+**Site-expérience : à refaire entièrement plus tard.** Le site client (OKTO, services,
+devis, etc.) a été retiré volontairement — il sera reconstruit sur cette base d'identité.
 
-- **Code par défaut : `BONUS2026`**
-- Pour le changer : éditer `GATE_CODE` en haut de `assets/script.js`.
-- ⚠️ Protection « douce » (côté navigateur) : parfaite pour un aperçu pro,
-  mais ce n'est pas une sécurité forte.
+## Stack
 
-## Collecte des e-mails (newsletter + contact)
+- **Next.js 14** (App Router, export statique)
+- **Tailwind CSS** — tokens de marque dans `tailwind.config.ts`
+- **Framer Motion** — apparitions au scroll, lévitation, halos
+- **next/font** — Sora (titres) + Inter (textes)
 
-Les formulaires envoient via **FormSubmit.co** (gratuit, sans inscription).
+## Identité
 
-- Destination définie par `FORM_ENDPOINT` dans `assets/script.js`
-  (actuellement `mbenson.valentino@gmail.com` — à remplacer par l'e-mail voulu).
-- ⚠️ **Activation unique** : au tout premier envoi, FormSubmit envoie un e-mail
-  de confirmation à cette adresse. Il faut cliquer le lien une fois pour activer.
+- **Nom** — racine wolof *Kom-Kom / Koom-koom* : économie, ressources, développement.
+- **Symbole** — `K∞M` : les « OO » en infini ; deux infinis superposés, le bas
+  (KOOM/KOOM) soutient le haut (le projet). Bol qui soutient + barres de croissance +
+  accent Sénégal (vert · or · rouge). Réfs visuelles dans `public/brand/`.
+- **Palette & contenus** — définis dans `lib/brand.ts`.
 
-## Mise en ligne (GitHub Pages)
+## OKTO — à ne pas confondre
 
-Un workflow (`.github/workflows/deploy.yml`) publie le site automatiquement.
+- **OKTO OS** (interne) — coordonne KOOM/KOOM et les 6 co-workers : RADAR, L'ŒIL,
+  LA VOIX, CADRE, ATELIER, RELAIS.
+- **OKTO** (visiteurs) — assistant visible. « Parler à OKTO ». *(À reconstruire.)*
 
-**Étape manuelle unique** (à faire une fois sur GitHub) :
-1. Aller dans **Settings → Pages** du dépôt.
-2. Sous **Build and deployment → Source**, choisir **GitHub Actions**.
-3. Le prochain push (ou relance du workflow) publie le site.
+## Structure
 
-URL une fois en ligne : `https://kmvr225.github.io/comcom-spread/`
+```
+app/            layout, styles globaux, page d'identité (accueil)
+components/
+  identity/     KoomLogo, KoomSymbol (mark + infini)
+  placeholders/ KoomSymbolScene, HeroSplinePlaceholder (slots Spline)
+  ui/           Reveal (animation scroll)
+lib/brand.ts    tokens & contenus de marque
+public/brand/   visuels de référence (logo, emblème)
+clients/        projets clients / démos (ex. bonus-test)
+```
 
 ## Lancer en local
 
 ```bash
-python3 -m http.server 8000   # puis http://localhost:8000
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # export statique -> out/
 ```
 
-## À personnaliser
+## Déploiement
 
-- **Photos** : remplacer les dégradés (`.media-*`, `.mag-*` dans `styles.css`)
-  par les vraies photos (sacs, couverture du Numéro 01, Apéro).
-- **Prix** : actuellement « sur demande / en vente ».
-- **Code d'accès** et **e-mail de réception** : voir ci-dessus.
-
----
-© COM'COM
+**Privé** : le workflow `.github/workflows/deploy-koom.yml` ne publie **pas**
+automatiquement (manuel uniquement, et seulement si GitHub Pages est activé).
+`basePath` = nom du dépôt au build (`NEXT_PUBLIC_BASE_PATH`).
+Instagram : `@koomkoombyspread`.
