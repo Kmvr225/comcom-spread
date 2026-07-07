@@ -1,11 +1,11 @@
 /* =========================================================
-   Configuration
-   - GATE_CODE : le code d'accès pour l'aperçu privé
+   Configuration — Sénégal Privilège
+   - GATE_CODE : code d'accès pour l'aperçu privé
    - FORM_ENDPOINT : collecteur d'e-mails (FormSubmit.co)
-     Remplacez l'adresse e-mail par celle de votre choix
-     (ex. celle de la cousine) pour rediriger les envois.
+     Remplacez l'adresse par celle de Sénégal Privilège
+     pour rediriger les demandes de réservation.
    ========================================================= */
-const GATE_CODE = 'BONUS2026';
+const GATE_CODE = 'PRIVILEGE2026';
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/mbenson.valentino@gmail.com';
 
 // ---------- Écran de code d'accès (aperçu privé) ----------
@@ -20,7 +20,7 @@ function unlockSite() {
   setTimeout(() => gate.remove(), 600);
 }
 
-if (sessionStorage.getItem('bonus_unlocked') === '1') {
+if (sessionStorage.getItem('sp_unlocked') === '1') {
   unlockSite();
 } else {
   document.body.classList.add('locked');
@@ -30,7 +30,7 @@ if (sessionStorage.getItem('bonus_unlocked') === '1') {
 gateForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (gateInput.value.trim().toUpperCase() === GATE_CODE.toUpperCase()) {
-    sessionStorage.setItem('bonus_unlocked', '1');
+    sessionStorage.setItem('sp_unlocked', '1');
     unlockSite();
   } else {
     gateMsg.textContent = 'Code incorrect, réessayez.';
@@ -69,12 +69,12 @@ onScroll();
 
 // Apparition au scroll (fondu + montée, en cascade)
 const revealEls = document.querySelectorAll(
-  '.section-head, .card, .value, .split-visual, .split-text, .event-band, .cta-band'
+  '.section-head, .card, .value, .pillar, .split-visual, .split-text, .cta-band, .fleet-note'
 );
 revealEls.forEach((el) => el.classList.add('reveal'));
 
 // Décalage progressif pour les éléments d'une même grille
-document.querySelectorAll('.products, .values').forEach((grid) => {
+document.querySelectorAll('.products, .values, .pillars').forEach((grid) => {
   Array.from(grid.children).forEach((child, i) => {
     child.style.transitionDelay = (i * 0.09) + 's';
   });
@@ -93,6 +93,38 @@ const io = new IntersectionObserver(
 );
 revealEls.forEach((el) => io.observe(el));
 
+// ---------- Profondeur 3D : inclinaison des stages au survol ----------
+// Chaque "stage" (véhicule sur fond noir) réagit à la souris : léger
+// basculement en perspective + déplacement de la voiture et de la lueur
+// pour un rendu cinématique et profond. Désactivé si mouvement réduit.
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canHover = window.matchMedia('(hover: hover)').matches;
+
+if (!prefersReduced && canHover) {
+  document.querySelectorAll('.stage').forEach((stage) => {
+    const car = stage.querySelector('.car');
+    stage.addEventListener('pointermove', (e) => {
+      const r = stage.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;   // -0.5 → 0.5
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      stage.style.transform = `perspective(900px) rotateY(${px * 9}deg) rotateX(${-py * 7}deg)`;
+      if (car) car.style.transform = `translateZ(40px) translate(${px * 16}px, ${py * 10}px)`;
+    });
+    stage.addEventListener('pointerleave', () => {
+      stage.style.transform = '';
+      if (car) car.style.transform = '';
+    });
+  });
+}
+
+// ---------- Parallaxe des lignes dorées du hero ----------
+const heroLines = document.querySelector('.hero-lines');
+if (heroLines && !prefersReduced) {
+  window.addEventListener('scroll', () => {
+    heroLines.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+  }, { passive: true });
+}
+
 // Envoi d'un formulaire vers le collecteur d'e-mails
 async function sendForm(data) {
   const res = await fetch(FORM_ENDPOINT, {
@@ -104,7 +136,7 @@ async function sendForm(data) {
   return res.json();
 }
 
-// Newsletter — collecte des e-mails clientes
+// Newsletter — cercle privé
 const newsletter = document.getElementById('newsletter');
 const newsletterMsg = document.getElementById('newsletterMsg');
 newsletter.addEventListener('submit', async (e) => {
@@ -112,15 +144,15 @@ newsletter.addEventListener('submit', async (e) => {
   const email = newsletter.email.value;
   newsletterMsg.textContent = 'Envoi en cours…';
   try {
-    await sendForm({ email, _subject: 'Nouvelle inscription newsletter — Bonus' });
-    newsletterMsg.textContent = 'Merci ! Vous êtes bien inscrite ✦';
+    await sendForm({ email, _subject: 'Nouvelle inscription — Cercle privé Sénégal Privilège' });
+    newsletterMsg.textContent = 'Merci ! Vous faites partie du cercle ✦';
     newsletter.reset();
   } catch {
     newsletterMsg.textContent = 'Oups, réessayez dans un instant.';
   }
 });
 
-// Formulaire de contact
+// Formulaire de contact / réservation
 const contactForm = document.getElementById('contactForm');
 const contactMsg = document.getElementById('contactMsg');
 contactForm.addEventListener('submit', async (e) => {
@@ -131,9 +163,9 @@ contactForm.addEventListener('submit', async (e) => {
       name: contactForm.name.value,
       email: contactForm.email.value,
       message: contactForm.message.value,
-      _subject: 'Nouveau message depuis le site Bonus',
+      _subject: 'Nouvelle demande de réservation — Sénégal Privilège',
     });
-    contactMsg.textContent = 'Message envoyé ! Nous revenons vers vous très vite ✦';
+    contactMsg.textContent = 'Demande envoyée ! Nous revenons vers vous très vite ✦';
     contactForm.reset();
   } catch {
     contactMsg.textContent = 'Oups, réessayez dans un instant.';
