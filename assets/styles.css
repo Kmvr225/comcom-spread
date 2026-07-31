@@ -52,6 +52,13 @@ em { font-style: italic; }
   letter-spacing: 0.1em;
 }
 
+/* ---------- Barre de progression ---------- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 120;
+  background: var(--terra); transform: scaleX(0); transform-origin: 0 50%;
+  will-change: transform;
+}
+
 /* ---------- Topbar ---------- */
 .topbar {
   background: var(--ink); color: var(--bg);
@@ -67,9 +74,11 @@ em { font-style: italic; }
   padding: 18px clamp(20px, 5vw, 64px);
   background: var(--bg);
   border-bottom: 1px solid var(--line-soft);
-  transition: border-color 0.3s var(--ease);
+  transition: border-color 0.3s var(--ease), transform 0.45s var(--ease);
+  will-change: transform;
 }
 .site-header.scrolled { border-color: var(--line); }
+.site-header.nav-hidden { transform: translateY(-100%); }
 
 .brand { display: flex; flex-direction: column; line-height: 1; }
 .brand-mark { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.5rem; letter-spacing: 0.12em; }
@@ -124,8 +133,16 @@ em { font-style: italic; }
 .hero-col > *:nth-child(3) { animation-delay: 0.3s; }
 .hero-col > *:nth-child(4) { animation-delay: 0.4s; }
 .hero-col > *:nth-child(5) { animation-delay: 0.5s; }
-.hero-feature { animation-delay: 0.35s; }
+.hero-feature { animation-delay: 0.4s; }
 @keyframes rise { to { opacity: 1; transform: none; } }
+
+/* Titre révélé ligne par ligne (masque) */
+.hero-title { animation: none !important; opacity: 1 !important; transform: none !important; }
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line > span { display: block; transform: translateY(108%); animation: lineUp 1s var(--ease) forwards; }
+.hero-title .line:nth-child(1) > span { animation-delay: 0.12s; }
+.hero-title .line:nth-child(2) > span { animation-delay: 0.26s; }
+@keyframes lineUp { to { transform: translateY(0); } }
 
 /* ---------- Couverture magazine (dessinée) ---------- */
 .cover {
@@ -346,5 +363,6 @@ body.locked { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   *, body::after { animation: none !important; transition: none !important; scroll-behavior: auto; }
-  .reveal, .hero-col > *, .hero-feature { opacity: 1 !important; transform: none !important; }
+  .reveal, .hero-col > *, .hero-feature, .hero-title .line > span { opacity: 1 !important; transform: none !important; }
+  .scroll-progress { display: none; }
 }

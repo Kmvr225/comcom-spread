@@ -61,15 +61,46 @@ nav.querySelectorAll('a').forEach((link) => {
   });
 });
 
-// Ombre du header au scroll
+// ---------- Scroll : progression + header + parallax (une seule boucle rAF) ----------
 const header = document.querySelector('.site-header');
-const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+const progress = document.getElementById('progress');
+const heroFeature = document.querySelector('.hero-feature');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let lastY = window.scrollY;
+let ticking = false;
+
+function onFrame() {
+  const y = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+
+  // Barre de progression
+  if (progress) progress.style.transform = `scaleX(${docH > 0 ? y / docH : 0})`;
+
+  // Header : ombre + masquage en descendant
+  header.classList.toggle('scrolled', y > 8);
+  if (!nav.classList.contains('open')) {
+    if (y > lastY && y > 200) header.classList.add('nav-hidden');
+    else header.classList.remove('nav-hidden');
+  }
+
+  // Parallax léger sur la couverture du hero
+  if (heroFeature && !reduceMotion && y < window.innerHeight * 1.2) {
+    heroFeature.style.transform = `translateY(${y * -0.05}px)`;
+  }
+
+  lastY = y;
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) { requestAnimationFrame(onFrame); ticking = true; }
+}, { passive: true });
+onFrame();
 
 // Apparition au scroll (fondu + montée, en cascade)
 const revealEls = document.querySelectorAll(
-  '.section-head, .card, .value, .split-visual, .split-text, .event-band, .cta-band'
+  '.section-head, .card, .value, .split-visual, .split-text, .event-band, .cta-band, .manifesto-inner'
 );
 revealEls.forEach((el) => el.classList.add('reveal'));
 
@@ -113,7 +144,7 @@ newsletter.addEventListener('submit', async (e) => {
   newsletterMsg.textContent = 'Envoi en cours…';
   try {
     await sendForm({ email, _subject: 'Nouvelle inscription newsletter — Bonus' });
-    newsletterMsg.textContent = 'Merci ! Vous êtes bien inscrite ✦';
+    newsletterMsg.textContent = 'Merci — vous êtes bien inscrite.';
     newsletter.reset();
   } catch {
     newsletterMsg.textContent = 'Oups, réessayez dans un instant.';
@@ -133,9 +164,23 @@ contactForm.addEventListener('submit', async (e) => {
       message: contactForm.message.value,
       _subject: 'Nouveau message depuis le site Bonus',
     });
-    contactMsg.textContent = 'Message envoyé ! Nous revenons vers vous très vite ✦';
+    contactMsg.textContent = 'Message envoyé — nous revenons vers vous très vite.';
     contactForm.reset();
   } catch {
     contactMsg.textContent = 'Oups, réessayez dans un instant.';
   }
 });
+
+// ---------- Boutons magnétiques (finition, uniquement sur écrans avec souris) ----------
+if (window.matchMedia('(hover: hover)').matches && !reduceMotion) {
+  document.querySelectorAll('.btn, .nav-cta').forEach((el) => {
+    el.style.transition = 'transform 0.25s cubic-bezier(0.22,1,0.36,1), background 0.25s, color 0.25s';
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const mx = e.clientX - r.left - r.width / 2;
+      const my = e.clientY - r.top - r.height / 2;
+      el.style.transform = `translate(${mx * 0.18}px, ${my * 0.28}px)`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = 'translate(0,0)'; });
+  });
+}
